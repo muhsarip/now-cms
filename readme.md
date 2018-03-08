@@ -1,8 +1,13 @@
 NOW CMS 
 
+
+
 Ini adalah project CRUD dengan menggunakan Laravel 5.4 dan ReactJS.
 
 Template yang digunakan adalah template gratis dari creative team , thanks creative team !
+
+dokumentasi template react : https://creativetimofficial.github.io/material-dashboard-react/#/documentation/tutorial
+dokumentasi official laravel : cari sendiri ! haha
 
 requirement :
 - php versi 5.4 >=
