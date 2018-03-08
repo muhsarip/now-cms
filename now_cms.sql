@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2018 at 03:54 AM
+-- Generation Time: Mar 08, 2018 at 04:37 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -71,6 +71,36 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `class` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `class`, `created_at`, `updated_at`) VALUES
+(12, 'dsds', 'sdsds', '2018-03-06 14:45:22', '2018-03-06 14:45:22'),
+(19, 'fdfd', 'fdfd', '2018-03-06 15:03:26', '2018-03-06 15:03:26'),
+(24, 'jjhjh', 'jhjh', '2018-03-06 15:10:44', '2018-03-06 15:10:44'),
+(33, 'dsdsds', 'sdsffsfs', '2018-03-08 15:27:52', '2018-03-08 15:27:52'),
+(34, '565hdsg', '54yhghdfz', '2018-03-08 15:27:56', '2018-03-08 15:27:56'),
+(35, '534y5hfgg', 'retfdgrrh', '2018-03-08 15:28:00', '2018-03-08 15:28:00'),
+(36, 'hfhewh5aehd', 'gfhhghgf', '2018-03-08 15:28:03', '2018-03-08 15:28:03'),
+(37, 'ffhgh', 'ghejejj', '2018-03-08 15:28:10', '2018-03-08 15:28:10'),
+(39, 'yre45h', 'hsjsjr', '2018-03-08 15:28:17', '2018-03-08 15:28:17'),
+(40, 'fdfdfd', 'fdfdfd', '2018-03-08 15:34:22', '2018-03-08 15:34:22');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -108,6 +138,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_token_index` (`token`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -123,6 +159,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `users`
 --

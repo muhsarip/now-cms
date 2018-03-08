@@ -11,13 +11,14 @@ import { PanelHeader, Button } from 'components';
 
 const base_url  = "http://localhost/now-cms3/public/";
 
-class StudentAdd extends React.Component{
+class StudentEdit extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            id:'',
             name:'',
             class:'',
-            textButton:'Submit',
+            textButton:'Update',
             disableButton:false,
             err_message:[],
             success:false,
@@ -26,6 +27,26 @@ class StudentAdd extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
         this.showLoading = this.showLoading.bind(this);
+    }
+
+    componentWillMount(){
+        console.log(this.props);
+        var instance = this;
+        axios.get(base_url + 'api/student/' + this.props.match.params.id)
+        .then(function (response) {
+            console.log(response);
+            if (response.data.success == true) {
+                var dt = response.data.data;
+                instance.setState({
+                    id:dt.id,
+                    name:dt.name,
+                    class:dt.class,
+                });
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     handleInputChange(event) {
@@ -46,7 +67,7 @@ class StudentAdd extends React.Component{
             });
         }else{
             this.setState({
-                textButton:'Submit',
+                textButton:'Update',
                 disableButton:false
             });
         }
@@ -64,7 +85,8 @@ class StudentAdd extends React.Component{
             success:false,
         });
 
-        axios.post(base_url + 'api/student/create', {
+        axios.post(base_url + 'api/student/update', {
+            id:this.state.id,
             name: this.state.name,
             class: this.state.class
         })
@@ -72,9 +94,6 @@ class StudentAdd extends React.Component{
             instance.showLoading(false);
             if (response.data.success === true) {
                 instance.setState({
-                    name:'',
-                    class:'',
-                    err_message : [],
                     success:true,
                 });
             }else{
@@ -146,13 +165,13 @@ class StudentAdd extends React.Component{
                                         {
                                             (this.state.success==true?
                                                 <Alert color="success"  isOpen={this.state.visible} toggle={this.onDismiss}>
-                                                    <span>Success to create new student data</span>
+                                                    <span>Success to update student data</span>
                                                 </Alert>
                                                 :<span></span>)
                                         }
-                                        <NavLink to={'student'} >
-                                            <Button color="info"   ><i className="now-ui-icons arrows-1_minimal-left"></i> Back to list</Button>
-                                        </NavLink>
+                                        <NavLink to={'/student'} >
+                                                    <Button color="info"   ><i className="now-ui-icons arrows-1_minimal-left"></i> Back to list</Button>
+                                                </NavLink>
                                         <Button color="primary"  disabled={this.state.disableButton} >{ this.state.textButton }</Button>
                                       
                                       </Form>
@@ -167,4 +186,4 @@ class StudentAdd extends React.Component{
     }
 }
 
-export default StudentAdd;  
+export default StudentEdit;  
