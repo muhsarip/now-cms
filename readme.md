@@ -28,10 +28,15 @@ Tutorial instalasi :
 -- Instalasi frontend (reactjs)
 1. Buka command promprt baru
 2. Dari folder root project, cd ke public/dev
-3. ketik : npm install
-4. Tunggu sampai package selesai di install
-5. sekarang jalankan mode development, ketik : npm start
-6. perhatikan chrome kamu, akan keluar halaman baru dalam beberapa detik
-7. tara !!! selesai
+3. buat file namanya .env
+
+isinya : 
+NODE_PATH=./src
+
+4. lalu ketik : npm install
+5. Tunggu sampai package selesai di install
+6. sekarang jalankan mode development, ketik : npm start
+7. perhatikan chrome kamu, akan keluar halaman baru dalam beberapa detik
+8. tara !!! selesai
 
 Pada side menu terdapat menu Student, silahkan di explore. sudah dibuat CRUD nya !
